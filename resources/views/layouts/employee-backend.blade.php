@@ -147,7 +147,7 @@
                     <span class="smini-visible">
                         <i class="fa fa-circle-notch text-primary"></i>
                     </span>
-                    <span class="smini-hide fs-5 tracking-wider">{{ auth()->user()->name }}</span></span>
+                    <span class="smini-hide fs-5 tracking-wider">Emp<span class="fw-normal"> Panel</span></span>
                 </a>
                 <!-- END Logo -->
 
@@ -392,7 +392,7 @@
                             href="https://fiverr.com/hassanjavaidrao" target="_blank">hassanjrao</a>
                     </div>
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
-                        <a class="fw-semibold" href="https://1.envato.market/AVD6j" target="_blank">Sim App</a>
+                        <a class="fw-semibold" href="#" target="_blank">Sim App</a>
                         &copy;
                         <span data-toggle="year-copy"></span>
                     </div>
