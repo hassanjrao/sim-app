@@ -149,7 +149,7 @@
                     <span class="smini-visible">
                         <i class="fa fa-circle-notch text-primary"></i>
                     </span>
-                    <span class="smini-hide fs-5 tracking-wider">Employee<span class="fw-normal"> Panel</span></span>
+                    <span class="smini-hide fs-5 tracking-wider">Emp<span class="fw-normal"> Panel</span></span>
                 </a>
                 <!-- END Logo -->
 
