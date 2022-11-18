@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>@yield('page-title',"Admin Panel -Sim App")</title>
+    <title>@yield('page-title',"Employee Panel -Sim App")</title>
 
     <meta name="description"
-        content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        content="OneUI - Bootstrap 5 Employee Template &amp; UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
@@ -149,7 +149,7 @@
                     <span class="smini-visible">
                         <i class="fa fa-circle-notch text-primary"></i>
                     </span>
-                    <span class="smini-hide fs-5 tracking-wider">Admin<span class="fw-normal"> Panel</span></span>
+                    <span class="smini-hide fs-5 tracking-wider">Employee<span class="fw-normal"> Panel</span></span>
                 </a>
                 <!-- END Logo -->
 
