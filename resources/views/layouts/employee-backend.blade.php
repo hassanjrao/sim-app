@@ -38,8 +38,6 @@
     <link rel="stylesheet" href="{{ asset('js/plugins/tagsinput/bootstrap-tagsinput.css') }}">
 
 
-    @livewireStyles
-
     @yield('css_after')
 
     <!-- Scripts -->
@@ -555,7 +553,6 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
 
     <script src="{{ asset('js/plugins/tagsinput/bootstrap-tagsinput.min.js') }}"></script>
-    @livewireScripts
 
     @yield('js_after')
 
