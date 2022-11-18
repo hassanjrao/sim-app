@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>OneUI - Bootstrap 5 Admin Template &amp; UI Framework</title>
+        <title>Sim App</title>
 
-        <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta name="description" content="Sim App">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
