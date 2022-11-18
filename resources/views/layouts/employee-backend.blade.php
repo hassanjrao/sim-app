@@ -147,7 +147,7 @@
                     <span class="smini-visible">
                         <i class="fa fa-circle-notch text-primary"></i>
                     </span>
-                    <span class="smini-hide fs-5 tracking-wider">Emp<span class="fw-normal"> Panel</span></span>
+                    <span class="smini-hide fs-5 tracking-wider">{{ auth()->user()->name }}</span></span>
                 </a>
                 <!-- END Logo -->
 
@@ -362,7 +362,7 @@
             </div>
             <!-- END Header Content -->
 
-            
+
 
             <!-- Header Loader -->
             <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
