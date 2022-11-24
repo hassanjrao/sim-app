@@ -155,7 +155,7 @@
                 <div>
                     <!-- Dark Mode -->
                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                   
+
                     <!-- Close Sidebar, Visible only on mobile screens -->
                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                     <a class="d-lg-none btn btn-sm btn-alt-secondary ms-1" data-toggle="layout"
@@ -190,7 +190,7 @@
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('employee/sims') ? ' active' : '' }}"
+                            <a class="nav-main-link{{  Request::segment(2)=='sims' ? ' active' : '' }}"
                                 href="{{ route("employee.sims.index") }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>
                                 <span class="nav-main-link-name">Sims</span>
@@ -309,10 +309,7 @@
         <footer id="page-footer" class="bg-body-light">
             <div class="content py-3">
                 <div class="row fs-sm">
-                    <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-                        Developed with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold"
-                            href="https://fiverr.com/hassanjavaidrao" target="_blank">hassanjrao</a>
-                    </div>
+                    
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
                         <a class="fw-semibold" href="#" target="_blank">Sim App</a>
                         &copy;

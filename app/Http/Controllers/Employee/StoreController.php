@@ -17,6 +17,7 @@ class StoreController extends Controller
     {
         $stores=Store::where("added_by", auth()->id())->latest()->get();
 
+
         return view("employee.stores.index", compact("stores"));
     }
 
@@ -39,14 +40,21 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name"=>"required",
-            "address"=>"required",
+            "name"=>"required|unique:stores,name",
+            "address"=>"required|unique:stores,address",
+            "city"=>"required",
+            "telephone"=>"required",
+            "post_code"=>"required",
         ]);
 
         Store::create([
             "name"=>$request->name,
             "address"=>$request->address,
             "added_by"=>auth()->id(),
+            "city"=>$request->city,
+            "telephone"=>$request->telephone,
+            "post_code"=>$request->post_code,
+
         ]);
 
         return redirect()->route("employee.stores.index")->withToastSuccess('Successfully Created');
@@ -88,13 +96,20 @@ class StoreController extends Controller
         $store=Store::findOrFail($id);
 
         $request->validate([
-            "name"=>"required",
-            "address"=>"required",
+            "name"=>"required|unique:stores,name,".$store->id,
+            "address"=>"required|unique:stores,address,".$store->id,
+            "city"=>"required",
+            "telephone"=>"required",
+            "post_code"=>"required",
+
         ]);
 
         $store->update([
             "name"=>$request->name,
             "address"=>$request->address,
+            "city"=>$request->city,
+            "telephone"=>$request->telephone,
+            "post_code"=>$request->post_code,
         ]);
 
         return redirect()->route("employee.stores.index")->withToastSuccess('Successfully Updated');

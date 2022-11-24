@@ -16,6 +16,7 @@ class SimController extends Controller
      */
     public function index()
     {
+
         $stores = Store::where("added_by", auth()->user()->id)->get();
         $sims= Sim::where("added_by", auth()->user()->id)->latest()->with(["store","addedBy"])->get();
         return view("employee.sims.index", compact("stores", "sims"));
@@ -28,7 +29,8 @@ class SimController extends Controller
      */
     public function create()
     {
-        //
+        $stores = Store::where("added_by", auth()->user()->id)->get();
+        return view("employee.sims.create", compact("stores"));
     }
 
     /**
@@ -43,20 +45,29 @@ class SimController extends Controller
             "sim_numbers" => "required",
             "store_id" => "required",
 
+        ],[
+            "sim_numbers.required" => "Please add sim numbers",
+            "store_id.required" => "Please select store",
         ]);
 
 
-        $sim_numbers = explode(",", $request->sim_numbers);
+        $sim_numbers=$request->sim_numbers;
+
+        $simData=[];
 
         foreach ($sim_numbers as $sim_number) {
-            $sim = new Sim();
-            $sim->sim_number = $sim_number;
-            $sim->store_id = $request->store_id;
-            $sim->added_by = auth()->user()->id;
-            $sim->scanned_lat = $request->lat;
-            $sim->scanned_long = $request->lng;
-            $sim->save();
+
+            $simData[] = [
+                "sim_number" => $sim_number,
+                "store_id" => $request->store_id,
+                "added_by" => auth()->user()->id,
+                "created_at" => now(),
+                "updated_at" => now(),
+            ];
+
         }
+
+        Sim::insert($simData);
 
         return redirect()->route("employee.sims.index")->with("success", "Sims added successfully");
     }

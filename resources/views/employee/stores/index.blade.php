@@ -34,6 +34,9 @@
                                 {{-- <th>Store Id</th> --}}
                                 <th>Name</th>
                                 <th>Address</th>
+                                <th>City</th>
+                                <th>Telephone</th>
+                                <th>Postcode</th>
                                 <th>Created At</th>
                                 <th>Action</th>
                             </tr>
@@ -47,6 +50,9 @@
                                     {{-- <td>{{ $store->id }}</td> --}}
                                     <td>{{ $store->name }}</td>
                                     <td>{{ $store->address }}</td>
+                                    <td>{{ $store->city }}</td>
+                                    <td>{{ $store->telephone }}</td>
+                                    <td>{{ $store->post_code }}</td>
                                     <td>{{ $store->created_at }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Horizontal Primary">
@@ -118,8 +124,35 @@
                                             <div class="row mb-4">
                                                 <div class="col-12">
                                                     <label class="form-label" for="label">Address</label>
-                                                    <input required type="address" class="form-control" id="address"
+                                                    <input required type="text" class="form-control" id="address"
                                                         name="address">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <div class="col-12">
+                                                    <label class="form-label" for="label">City</label>
+                                                    <input required type="text" class="form-control" id="city"
+                                                        name="city">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <div class="col-12">
+                                                    <label class="form-label" for="label">Telephone</label>
+                                                    <input required type="text" class="form-control" id="Telephone"
+                                                        name="telephone">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <div class="col-12">
+                                                    <label class="form-label" for="label">Postcode</label>
+                                                    <input required type="text" class="form-control" id="post_Code"
+                                                        name="post_code">
                                                 </div>
 
                                             </div>
