@@ -68,7 +68,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
-                    Sims
+                    Sims (<span id="totalSims"></span>)
                 </h3>
 
             </div>
@@ -153,6 +153,7 @@
                     `<input type="hidden" name="sim_numbers[]" class='sim_numbers' value="${sim}">`)
             });
 
+            $("#totalSims).html(sims.length);
 
 
             // getValues(event.target.id)
@@ -170,6 +171,8 @@
 
             simsCont.html("");
             $(".sim_numbers").remove();
+
+            $("#totalSims).html(sims.length);
 
 
             sims.forEach(sim => {
