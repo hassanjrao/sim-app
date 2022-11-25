@@ -1,5 +1,5 @@
 @extends('layouts.employee-backend')
-@section('page-title', 'Stores')
+@section('page-title', 'Add Sims')
 @section('css_before')
     <!-- Page JS Plugins CSS -->
 
