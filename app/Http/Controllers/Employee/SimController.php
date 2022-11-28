@@ -63,8 +63,8 @@ class SimController extends Controller
                 "sim_number" => $sim_number,
                 "store_id" => $request->store_id,
                 "added_by" => auth()->user()->id,
-                "lat"=>$request->lat,
-                "lng"=>$request->lng,
+                "scanned_lat"=>$request->lat,
+                "scanned_long"=>$request->lng,
                 "created_at" => now(),
                 "updated_at" => now(),
             ];
