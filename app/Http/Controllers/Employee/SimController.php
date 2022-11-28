@@ -44,6 +44,8 @@ class SimController extends Controller
         $request->validate([
             "sim_numbers" => "required",
             "store_id" => "required",
+            "lat"=>"nullable",
+            "lng"=>"nullable"
 
         ],[
             "sim_numbers.required" => "Please add sim numbers",
