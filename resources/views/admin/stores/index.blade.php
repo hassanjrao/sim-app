@@ -28,7 +28,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                {{-- <th>Store Id</th> --}}
+                                <th>Store Id</th>
                                 <th>Name</th>
                                 <th>Address</th>
                                 <th>Added By</th>
@@ -42,7 +42,7 @@
                             @foreach ($stores as $store)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    {{-- <td>{{ $store->id }}</td> --}}
+                                    <td>{{ $store->id }}</td>
                                     <td>{{ $store->name }}</td>
                                     <td>{{ $store->address }}</td>
                                     <td>{{ $store->addedBy ? $store->addedBy->name : "" }}</td>
