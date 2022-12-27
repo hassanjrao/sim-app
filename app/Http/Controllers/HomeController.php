@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
+use App\Models\Sim;
+use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -28,7 +32,16 @@ class HomeController extends Controller
 
         if ($user->hasRole("admin")) {
 
-            return view("admin.dashboard");
+
+            $totalStores=Store::all()->count();
+            $totalEmployees=Employee::all()->count();
+
+            $totdayActivityLogs=DB::table("authentication_log")->whereDate("login_at",date("Y-m-d"))->count();
+
+
+            $totalSims=Sim::all()->count();
+
+            return view("admin.dashboard",compact("totalStores","totalEmployees","totdayActivityLogs","totalSims"));
 
         } elseif ($user->hasRole("employee")) {
 

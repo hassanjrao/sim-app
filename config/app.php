@@ -176,6 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Jenssegers\Agent\AgentServiceProvider::class,
+
     ],
 
     /*
@@ -231,6 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
     ],
 
 ];

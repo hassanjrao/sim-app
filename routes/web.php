@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityLogsController;
 use App\Http\Controllers\Admin\EmployeeContoller as AdminEmployeeContoller;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SimController;
@@ -59,5 +60,7 @@ Route::middleware(["auth","role:admin"])->prefix("admin")->name("admin.")->group
     Route::resource('stores', AdminStoreController::class);
 
     Route::resource("sims", SimController::class);
+
+    Route::resource("logs",ActivityLogsController::class);
 
 });

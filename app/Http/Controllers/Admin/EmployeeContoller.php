@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Rappasoft\LaravelAuthenticationLog\Models\AuthenticationLog as AuthenticationLog;
 class EmployeeContoller extends Controller
 {
     /**

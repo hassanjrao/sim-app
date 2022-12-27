@@ -211,6 +211,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/logs') ? ' active' : '' }}"
+                                href="{{ route("admin.logs.index") }}">
+                                <i class="nav-main-link-icon si si-magic-wand"></i>
+                                <span class="nav-main-link-name">Activity Logs</span>
+                            </a>
+                        </li>
+
 
 
                     </ul>
@@ -330,7 +338,7 @@
         <footer id="page-footer" class="bg-body-light">
             <div class="content py-3">
                 <div class="row fs-sm">
-                   
+
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
                         <a class="fw-semibold" href="#" target="_blank">Sim App</a>
                         &copy;
