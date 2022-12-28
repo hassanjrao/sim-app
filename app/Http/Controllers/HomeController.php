@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\MultipleSimSearch;
 use App\Models\Sim;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -38,14 +39,22 @@ class HomeController extends Controller
 
             $totdayActivityLogs=DB::table("authentication_log")->whereDate("login_at",date("Y-m-d"))->count();
 
-
             $totalSims=Sim::all()->count();
 
-            return view("admin.dashboard",compact("totalStores","totalEmployees","totdayActivityLogs","totalSims"));
+            $multipleSimSearches=MultipleSimSearch::count();
+
+
+            return view("admin.dashboard",compact("totalStores","totalEmployees","totdayActivityLogs","totalSims","multipleSimSearches"));
 
         } elseif ($user->hasRole("employee")) {
 
-            return view("employee.dashboard");
+
+            $totalStores=Store::where("added_by",$user->id)->count();
+            $totalSims=Sim::where("added_by",$user->id)->count();
+
+            $multipleSimSearches=MultipleSimSearch::where("scanned_by",$user->id)->count();
+
+            return view("employee.dashboard",compact("totalStores","totalSims","multipleSimSearches"));
         }
     }
 }

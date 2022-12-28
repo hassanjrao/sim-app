@@ -7,8 +7,7 @@
 
     <title>@yield('page-title',"Employee Panel -Sim App")</title>
 
-    <meta name="description"
-        content="OneUI - Bootstrap 5 Employee Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="description" content="Sims App">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
@@ -197,6 +196,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{  Request::segment(2)=='multiple-sim-search' ? ' active' : '' }}"
+                                href="{{ route("employee.multiple-sim-search.index") }}">
+                                <i class="nav-main-link-icon si si-magic-wand"></i>
+                                <span class="nav-main-link-name">Multiple Sims Search</span>
+                            </a>
+                        </li>
+
 
 
                     </ul>
@@ -301,7 +308,10 @@
 
         <!-- Main Container -->
         <main id="main-container">
-            @yield('content')
+            <div id="app">
+
+                @yield('content')
+            </div>
         </main>
         <!-- END Main Container -->
 
@@ -309,7 +319,7 @@
         <footer id="page-footer" class="bg-body-light">
             <div class="content py-3">
                 <div class="row fs-sm">
-                    
+
                     <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
                         <a class="fw-semibold" href="#" target="_blank">Sim App</a>
                         &copy;
@@ -330,7 +340,6 @@
     <script src="{{ asset('js/oneui.app.js') }}"></script>
 
     <!-- Laravel Scaffolding JS -->
-    <!-- <script src="{{ asset('/js/laravel.app.js') }}"></script> -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @include('sweetalert::alert')
 
@@ -351,6 +360,8 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
 
     <script src="{{ asset('js/plugins/tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+
+
 
     @yield('js_after')
 

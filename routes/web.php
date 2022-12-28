@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\Admin\ActivityLogsController;
 use App\Http\Controllers\Admin\EmployeeContoller as AdminEmployeeContoller;
+use App\Http\Controllers\Admin\MultipleSimSearchController as AdminMultipleSimSearchController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SimController;
 use App\Http\Controllers\Admin\StoreController as AdminStoreController;
+use App\Http\Controllers\Employee\MultipleSimSearchController;
 use App\Http\Controllers\Employee\SimController as EmployeeSimController;
+use App\Http\Controllers\Employee\SingleSimSearchController;
 use App\Http\Controllers\Employee\StoreController as EmployeeStoreController;
 use App\Http\Controllers\EmployeeContoller;
 use App\Http\Controllers\HomeController;
@@ -29,30 +32,38 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['register' => false]);
 
 
-Route::middleware("auth")->group(function(){
+Route::middleware("auth")->group(function () {
 
-    Route::get("/",[HomeController::class, "dashboard"])->name("/");
-    Route::get("/dashboard",[HomeController::class, "dashboard"])->name("dashboard");
+    Route::get("/", [HomeController::class, "dashboard"])->name("/");
+    Route::get("/dashboard", [HomeController::class, "dashboard"])->name("dashboard");
 });
 
 
 
-Route::middleware(["auth","role:employee"])->prefix("employee")->name("employee.")->group(function (){
+Route::middleware(["auth", "role:employee"])->prefix("employee")->name("employee.")->group(function () {
 
     Route::resource('stores', EmployeeStoreController::class);
 
-
     Route::resource('sims', EmployeeSimController::class);
 
+    Route::resource("single-sim-search", SingleSimSearchController::class);
+
+    Route::prefix("multiple-sim-search")->name("multiple-sim-search.")->group(
+        function () {
+
+            Route::get("/", [MultipleSimSearchController::class, "index"])->name("index");
+            Route::post("scan-sim", [MultipleSimSearchController::class, "scanSim"])->name("scanSim");
+        }
+    );
 });
 
 
 
-Route::middleware(["auth","role:admin"])->prefix("admin")->name("admin.")->group(function (){
+Route::middleware(["auth", "role:admin"])->prefix("admin")->name("admin.")->group(function () {
 
-    Route::get("profile",[ProfileController::class, "index"])->name("profile");
-    Route::put("profile",[ProfileController::class, "update"])->name("profile.update");
-    Route::put("profile/password",[ProfileController::class, "updatePassword"])->name("profile.update-password");
+    Route::get("profile", [ProfileController::class, "index"])->name("profile");
+    Route::put("profile", [ProfileController::class, "update"])->name("profile.update");
+    Route::put("profile/password", [ProfileController::class, "updatePassword"])->name("profile.update-password");
 
 
     Route::resource('employees', AdminEmployeeContoller::class);
@@ -61,6 +72,7 @@ Route::middleware(["auth","role:admin"])->prefix("admin")->name("admin.")->group
 
     Route::resource("sims", SimController::class);
 
-    Route::resource("logs",ActivityLogsController::class);
+    Route::resource("logs", ActivityLogsController::class);
 
+    Route::get('multiple-sim-search', [AdminMultipleSimSearchController::class, 'index'])->name('multiple-sim-search.index');
 });
