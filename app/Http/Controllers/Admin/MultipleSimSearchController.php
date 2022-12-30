@@ -10,7 +10,7 @@ class MultipleSimSearchController extends Controller
 {
     public function index(){
 
-        $multipleSimSearches = MultipleSimSearch::with(["user","sim","sim.store"])->latest()->get();
+        $multipleSimSearches = MultipleSimSearch::with(["user","systemSim"])->latest()->get();
 
         return view("admin.multiple-sim-search.index", compact("multipleSimSearches"));
     }

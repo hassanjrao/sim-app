@@ -35,7 +35,7 @@
                                 <th>Scanned By</th>
                                 <th>Lat</th>
                                 <th>Long</th>
-                                <th>Store</th>
+                                {{-- <th>Store</th> --}}
                                 <th>Identity</th>
                                 <th>Created At</th>
 
@@ -47,12 +47,12 @@
                             @foreach ($multipleSimSearches as $sim)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $sim->sim->sim_number }}</td>
+                                    <td>{{ $sim->systemSim ? $sim->systemSim->ssn : "-" }}</td>
                                     <td>{{ $sim->scannedBy->name }}</td>
                                     <td>{{ $sim->lat }}</td>
                                     <td>{{ $sim->lng }}</td>
-                                    <td>{{ $sim->sim->store ? $sim->sim->store->name : "" }}</td>
-                                    <td>{{ "-" }}</td>
+                                    {{-- <td>{{ $sim->sim->store ? $sim->sim->store->name : "" }}</td> --}}
+                                    <td>{{ $sim->systemSim ? $sim->systemSim->company : "-" }}</td>
 
                                     <td>{{ $sim->created_at }}</td>
 

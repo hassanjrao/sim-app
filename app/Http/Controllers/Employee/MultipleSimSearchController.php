@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MultipleSearchSim;
 use App\Models\MultipleSimSearch;
 use App\Models\Sim;
+use App\Models\SystemSim;
 use Illuminate\Http\Request;
 
 class MultipleSimSearchController extends Controller
@@ -39,38 +40,50 @@ class MultipleSimSearchController extends Controller
             The admin will be able to see the scanned location, and the sim identity and the employee who scanned the sim
         */
 
-        $sim = Sim::where("sim_number", $sim_number)->first();
+        $sim = SystemSim::where("ssn", $sim_number)->first();
 
         if(!$sim){
+
+           $sim= SystemSim::create([
+                "ssn" => $sim_number,
+                "company" => "Other"
+            ]);
+
+            MultipleSimSearch::create([
+                "system_sim_id" => $sim->id,
+                "lat" => $lat,
+                "lng" => $lng,
+                "scanned_by" => auth()->user()->id
+            ]);
+
             return response()->json([
-                "status" => "Failed",
-                "message" => "Sim not found",
+                "status" => "Success",
+                "message" => "Sim found",
                 "data"=>[
                     "sim_number"=>$sim_number,
                     "store_name"=>"",
-                    "sim_identity"=>"",
+                    "sim_identity"=>"Other",
                 ]
 
             ],200);
         }
 
         MultipleSimSearch::create([
-            "sim_id" => $sim->id,
+            "system_sim_id" => $sim->id,
             "lat" => $lat,
             "lng" => $lng,
             "scanned_by" => auth()->user()->id
         ]);
 
-        $store_name = $sim->store ? $sim->store->name : "";
+        // $store_name = $sim->store ? $sim->store->name : "";
 
-        // $sim_identity = $sim->sim_identity ? $sim->sim_identity : "";
 
         return response()->json([
             "status" => "Success",
             "message" => "Sim found",
             "data"=>[
                 "sim_number"=>$sim_number,
-                "store_name"=>$store_name,
+                "store_name"=>"",
                 "sim_identity"=>"KYA",
             ]
 

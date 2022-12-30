@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ActivityLogsController;
 use App\Http\Controllers\Admin\EmployeeContoller as AdminEmployeeContoller;
+use App\Http\Controllers\Admin\ExcelUploadController;
 use App\Http\Controllers\Admin\MultipleSimSearchController as AdminMultipleSimSearchController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SimController;
@@ -75,4 +76,9 @@ Route::middleware(["auth", "role:admin"])->prefix("admin")->name("admin.")->grou
     Route::resource("logs", ActivityLogsController::class);
 
     Route::get('multiple-sim-search', [AdminMultipleSimSearchController::class, 'index'])->name('multiple-sim-search.index');
+
+    Route::get('upload-excel', [ExcelUploadController::class, 'index'])->name('upload-excel.index');
+
+    Route::post('upload-excel', [ExcelUploadController::class, 'upload'])->name('upload-excel.upload');
+
 });

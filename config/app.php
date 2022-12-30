@@ -178,6 +178,7 @@ return [
 
         Jenssegers\Agent\AgentServiceProvider::class,
 
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -234,6 +235,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

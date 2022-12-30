@@ -52,9 +52,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Sim Number</th>
-                                        <th>Status</th>
-                                        <th>Message</th>
-                                        <th>Store Name</th>
+                                        <!-- <th>Status</th> -->
+                                        <!-- <th>Message</th> -->
+                                        <th>Identity</th>
                                         <th>Action</th>
                                     </tr>
 
@@ -65,7 +65,7 @@
                                     <tr v-for="(sim, index) in simsScanned" :key="index">
                                         <td>{{ index + 1 }}</td>
                                         <td>{{ sim.sim_number }}</td>
-                                        <td>
+                                        <!-- <td>
                                             <span v-if="sim.status == 'Success'"
                                                 class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">
                                                 Success
@@ -76,8 +76,8 @@
                                             </span>
 
                                         </td>
-                                        <td>{{ sim.message }}</td>
-                                        <td>{{ sim.store_name }}</td>
+                                        <td>{{ sim.message }}</td> -->
+                                        <td>{{ sim.sim_identity }}</td>
 
                                         <td>
                                             <button v-if="sim.status == 'Failed' || sim.status == NULL"
@@ -158,7 +158,7 @@ export default {
                 'sim_number': this.scannedSim,
                 'status': 'Scanning..',
                 'message': '',
-                'store_name': ''
+                'sim_identity': 'Scanning..'
             });
 
             let scannedSim = this.scannedSim;
@@ -178,7 +178,7 @@ export default {
 
                     this.simsScanned[0].status = response.data.status;
                     this.simsScanned[0].message = response.data.message;
-                    this.simsScanned[0].store_name = response.data.data.store_name;
+                    this.simsScanned[0].sim_identity = response.data.data.sim_identity;
 
                     if (response.data.status == 'Failed') {
                         this.showStatus(response.data.message, "error");

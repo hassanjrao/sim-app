@@ -15,8 +15,8 @@ class MultipleSimSearch extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function sim(){
-        return $this->belongsTo(Sim::class);
+    public function systemSim(){
+        return $this->belongsTo(SystemSim::class);
     }
 
     public function scannedBy(){

@@ -220,6 +220,14 @@
                         </li>
 
                         <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/upload-excel') ? ' active' : '' }}"
+                                href="{{ route("admin.upload-excel.index") }}">
+                                <i class="nav-main-link-icon si si-magic-wand"></i>
+                                <span class="nav-main-link-name">Excel Upload</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('admin/logs') ? ' active' : '' }}"
                                 href="{{ route("admin.logs.index") }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>
