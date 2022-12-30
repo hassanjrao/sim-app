@@ -5419,6 +5419,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5621,12 +5631,13 @@ __webpack_require__.r(__webpack_exports__);
 
       Swal.fire({
         icon: type,
-        title: message,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        allowEnterKey: false
+        title: message
+        // allowOutsideClick: false,
+        // allowEscapeKey: false,
+        // allowEnterKey: false,
       });
     }
+
     $('.modal').modal("hide");
   }
 });
@@ -28886,7 +28897,35 @@ var render = function () {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(sim.sim_number))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(sim.status))]),
+                          _c("td", [
+                            sim.status == "Success"
+                              ? _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success",
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Success\n                                        "
+                                    ),
+                                  ]
+                                )
+                              : sim.status == "Failed"
+                              ? _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-danger-light text-danger",
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Failed\n                                        "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                          ]),
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(sim.message))]),
                           _vm._v(" "),

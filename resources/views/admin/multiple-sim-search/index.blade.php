@@ -1,4 +1,4 @@
-@extends('layouts.employee-backend')
+@extends('layouts.admin-backend')
 @section('page-title', 'Sims')
 @section('css_before')
     <!-- Page JS Plugins CSS -->

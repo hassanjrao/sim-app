@@ -65,13 +65,23 @@
                                     <tr v-for="(sim, index) in simsScanned" :key="index">
                                         <td>{{ index + 1 }}</td>
                                         <td>{{ sim.sim_number }}</td>
-                                        <td>{{ sim.status }}</td>
+                                        <td>
+                                            <span v-if="sim.status == 'Success'"
+                                                class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-success-light text-success">
+                                                Success
+                                            </span>
+                                            <span v-else-if="sim.status == 'Failed'"
+                                                class="fs-xs fw-semibold d-inline-block py-1 px-3 rounded-pill bg-danger-light text-danger">
+                                                Failed
+                                            </span>
+
+                                        </td>
                                         <td>{{ sim.message }}</td>
                                         <td>{{ sim.store_name }}</td>
 
                                         <td>
-                                            <button v-if="sim.status == 'Failed' || sim.status==NULL" class="btn btn-danger btn-sm"
-                                                @click="removeSim(index)">
+                                            <button v-if="sim.status == 'Failed' || sim.status == NULL"
+                                                class="btn btn-danger btn-sm" @click="removeSim(index)">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                             <div v-else>
@@ -114,8 +124,8 @@ export default {
             simsScanned: [],
             scannedSim: '',
             baseURL: '/employee/multiple-sim-search',
-            lat:'',
-            lng:''
+            lat: '',
+            lng: ''
         }
     },
 
@@ -151,7 +161,7 @@ export default {
                 'store_name': ''
             });
 
-            let scannedSim= this.scannedSim;
+            let scannedSim = this.scannedSim;
 
             this.scannedSim = '';
 
@@ -195,7 +205,7 @@ export default {
 
 
         const success = (position) => {
-            this.lat  = position.coords.latitude;
+            this.lat = position.coords.latitude;
             this.lng = position.coords.longitude;
 
 

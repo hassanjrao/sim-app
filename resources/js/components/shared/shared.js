@@ -29,9 +29,9 @@ export default {
             Swal.fire({
                 icon: type,
                 title: message,
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                allowEnterKey: false,
+                // allowOutsideClick: false,
+                // allowEscapeKey: false,
+                // allowEnterKey: false,
             })
 
 
