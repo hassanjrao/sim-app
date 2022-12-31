@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\MultipleSimSearch;
 use App\Models\Sim;
+use App\Models\SingleSimSearch;
 use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,8 +44,11 @@ class HomeController extends Controller
 
             $multipleSimSearches=MultipleSimSearch::count();
 
+            $singleSimSearches=SingleSimSearch::count();
 
-            return view("admin.dashboard",compact("totalStores","totalEmployees","totdayActivityLogs","totalSims","multipleSimSearches"));
+
+
+            return view("admin.dashboard",compact("totalStores","totalEmployees","totdayActivityLogs","totalSims","multipleSimSearches","singleSimSearches"));
 
         } elseif ($user->hasRole("employee")) {
 
@@ -53,8 +57,9 @@ class HomeController extends Controller
             $totalSims=Sim::where("added_by",$user->id)->count();
 
             $multipleSimSearches=MultipleSimSearch::where("scanned_by",$user->id)->count();
+            $singleSimSearches=SingleSimSearch::where("scanned_by",$user->id)->count();
 
-            return view("employee.dashboard",compact("totalStores","totalSims","multipleSimSearches"));
+            return view("employee.dashboard",compact("totalStores","totalSims","multipleSimSearches","singleSimSearches"));
         }
     }
 }

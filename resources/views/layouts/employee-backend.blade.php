@@ -206,6 +206,16 @@
 
 
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link{{  Request::segment(2)=='single-sim-search' ? ' active' : '' }}"
+                                href="{{ route("employee.single-sim-search.index") }}">
+                                <i class="nav-main-link-icon si si-magic-wand"></i>
+                                <span class="nav-main-link-name">Single Sim Search</span>
+                            </a>
+                        </li>
+
+
+
                     </ul>
                 </div>
                 <!-- END Side Navigation -->

@@ -220,6 +220,15 @@
                         </li>
 
                         <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/single-sim-search') ? ' active' : '' }}"
+                                href="{{ route("admin.single-sim-search.index") }}">
+                                <i class="nav-main-link-icon si si-magic-wand"></i>
+                                <span class="nav-main-link-name">Single Sim Search</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('admin/upload-excel') ? ' active' : '' }}"
                                 href="{{ route("admin.upload-excel.index") }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>

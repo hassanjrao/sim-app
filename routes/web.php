@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ExcelUploadController;
 use App\Http\Controllers\Admin\MultipleSimSearchController as AdminMultipleSimSearchController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SimController;
+use App\Http\Controllers\Admin\SingleSimSearchController as AdminSingleSimSearchController;
 use App\Http\Controllers\Admin\StoreController as AdminStoreController;
 use App\Http\Controllers\Employee\MultipleSimSearchController;
 use App\Http\Controllers\Employee\SimController as EmployeeSimController;
@@ -49,6 +50,14 @@ Route::middleware(["auth", "role:employee"])->prefix("employee")->name("employee
 
     Route::resource("single-sim-search", SingleSimSearchController::class);
 
+    Route::prefix("single-sim-search")->name("single-sim-search.")->group(
+        function () {
+
+            Route::get("/", [SingleSimSearchController::class, "index"])->name("index");
+            Route::post("scan-sim", [SingleSimSearchController::class, "scanSim"])->name("scanSim");
+        }
+    );
+
     Route::prefix("multiple-sim-search")->name("multiple-sim-search.")->group(
         function () {
 
@@ -76,6 +85,8 @@ Route::middleware(["auth", "role:admin"])->prefix("admin")->name("admin.")->grou
     Route::resource("logs", ActivityLogsController::class);
 
     Route::get('multiple-sim-search', [AdminMultipleSimSearchController::class, 'index'])->name('multiple-sim-search.index');
+
+    Route::get('single-sim-search', [AdminSingleSimSearchController::class, 'index'])->name('single-sim-search.index');
 
     Route::get('upload-excel', [ExcelUploadController::class, 'index'])->name('upload-excel.index');
 

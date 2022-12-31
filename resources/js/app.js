@@ -20,6 +20,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('multiple-sim-search', require('./components/SimSearch/MultipleSimSearch.vue').default);
+Vue.component('single-sim-search', require('./components/SimSearch/SingleSimSearch.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

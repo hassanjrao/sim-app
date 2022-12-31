@@ -1,5 +1,5 @@
 @extends('layouts.admin-backend')
-@section('page-title', 'Multiple Sim Searches')
+@section('page-title', 'Single Sim Search')
 @section('css_before')
     <!-- Page JS Plugins CSS -->
 
@@ -18,7 +18,7 @@
         <div class="block block-rounded">
             <div class="block-header block-header-default">
                 <h3 class="block-title">
-                    Multiple Sim Search
+                    Single Sim Search
                 </h3>
 
             </div>
@@ -44,7 +44,7 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($multipleSimSearches as $sim)
+                            @foreach ($singleSimSearches as $sim)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $sim->systemSim ? $sim->systemSim->ssn : "-" }}</td>
