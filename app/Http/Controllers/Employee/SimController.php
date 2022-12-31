@@ -29,7 +29,7 @@ class SimController extends Controller
      */
     public function create()
     {
-        $stores = Store::where("added_by", auth()->user()->id)->get();
+        $stores = Store::all();
         return view("employee.sims.create", compact("stores"));
     }
 
