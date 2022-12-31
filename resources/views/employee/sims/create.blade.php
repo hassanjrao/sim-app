@@ -18,7 +18,7 @@
                     Add Sims
                 </h3>
 
-                <a href="{{ route("employee.sims.index") }}" class="btn btn-primary">All Sims</a>
+                <a href="{{ route('employee.sims.index') }}" class="btn btn-primary">All Sims</a>
 
 
 
@@ -39,7 +39,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-8">
-                                    <select class="form-control" required name="store_id">
+                                    <select class="js-select2 form-select" data-placeholder="Select Store" required name="store_id">
                                         <option value="">Select Store</option>
                                         @foreach ($stores as $store)
                                             <option value="{{ $store->id }}">{{ $store->name }}</option>

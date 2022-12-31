@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>@yield('page-title',"Employee Panel -Sim App")</title>
+    <title>@yield('page-title', 'Employee Panel -Sim App')</title>
 
     <meta name="description" content="Sims App">
     <meta name="author" content="pixelcave">
@@ -35,6 +35,10 @@
     <link rel="stylesheet" href="{{ asset('js/plugins/datatables-buttons-bs5/buttons.bootstrap5.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('js/plugins/tagsinput/bootstrap-tagsinput.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('js/plugins/select2/css/select2.min.css')}}">
+
+
 
 
     @yield('css_after')
@@ -96,7 +100,8 @@
             <div class="content-header border-bottom">
                 <!-- User Avatar -->
                 <a class="img-link me-1" href="javascript:void(0)">
-                    <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
+                    <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar10.jpg') }}"
+                        alt="">
                 </a>
                 <!-- END User Avatar -->
 
@@ -182,23 +187,23 @@
 
                         <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('employee/stores') ? ' active' : '' }}"
-                                href="{{ route("employee.stores.index") }}">
+                                href="{{ route('employee.stores.index') }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>
                                 <span class="nav-main-link-name">Stores</span>
                             </a>
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{  Request::segment(2)=='sims' ? ' active' : '' }}"
-                                href="{{ route("employee.sims.index") }}">
+                            <a class="nav-main-link{{ Request::segment(2) == 'sims' ? ' active' : '' }}"
+                                href="{{ route('employee.sims.index') }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>
                                 <span class="nav-main-link-name">Sims</span>
                             </a>
                         </li>
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{  Request::segment(2)=='multiple-sim-search' ? ' active' : '' }}"
-                                href="{{ route("employee.multiple-sim-search.index") }}">
+                            <a class="nav-main-link{{ Request::segment(2) == 'multiple-sim-search' ? ' active' : '' }}"
+                                href="{{ route('employee.multiple-sim-search.index') }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>
                                 <span class="nav-main-link-name">Multiple Sims Search</span>
                             </a>
@@ -207,8 +212,8 @@
 
 
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{  Request::segment(2)=='single-sim-search' ? ' active' : '' }}"
-                                href="{{ route("employee.single-sim-search.index") }}">
+                            <a class="nav-main-link{{ Request::segment(2) == 'single-sim-search' ? ' active' : '' }}"
+                                href="{{ route('employee.single-sim-search.index') }}">
                                 <i class="nav-main-link-icon si si-magic-wand"></i>
                                 <span class="nav-main-link-name">Single Sim Search</span>
                             </a>
@@ -371,6 +376,14 @@
 
     <script src="{{ asset('js/plugins/tagsinput/bootstrap-tagsinput.min.js') }}"></script>
 
+    <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <!-- Page JS Helpers (Flatpickr + BS Datepicker + BS Maxlength + Select2 + Masked Inputs + Ion Range Slider + BS Colorpicker plugins) -->
+    <script>
+        One.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-maxlength', 'jq-select2', 'jq-masked-inputs',
+            'jq-rangeslider', 'jq-colorpicker'
+        ]);
+    </script>
 
 
     @yield('js_after')
