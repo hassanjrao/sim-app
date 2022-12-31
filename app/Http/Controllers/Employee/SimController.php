@@ -17,7 +17,7 @@ class SimController extends Controller
     public function index()
     {
 
-        $stores = Store::where("added_by", auth()->user()->id)->get();
+        $stores = Store::all();
         $sims= Sim::where("added_by", auth()->user()->id)->latest()->with(["store","addedBy"])->get();
         return view("employee.sims.index", compact("stores", "sims"));
     }
