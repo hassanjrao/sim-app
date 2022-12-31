@@ -52,8 +52,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Sim Number</th>
-                                        <!-- <th>Status</th> -->
-                                        <!-- <th>Message</th> -->
+                                        <th>Store Name</th>
+                                        <th>Store Id</th>
                                         <th>Identity</th>
                                         <th>Action</th>
                                     </tr>
@@ -75,8 +75,10 @@
                                                 Failed
                                             </span>
 
-                                        </td>
-                                        <td>{{ sim.message }}</td> -->
+                                        </td>-->
+                                        <td>{{ sim.store_name }}</td>
+                                        <td>{{ sim.store_id }}</td>
+
                                         <td>{{ sim.sim_identity }}</td>
 
                                         <td>
@@ -156,9 +158,9 @@ export default {
 
             this.simsScanned.unshift({
                 'sim_number': this.scannedSim,
-                'status': 'Scanning..',
-                'message': '',
-                'sim_identity': 'Scanning..'
+                'store_name': 'Scanning..',
+                'store_id': '',
+                'sim_identity': ''
             });
 
             let scannedSim = this.scannedSim;
@@ -176,8 +178,8 @@ export default {
                 .then(response => {
                     this.loading = false;
 
-                    this.simsScanned[0].status = response.data.status;
-                    this.simsScanned[0].message = response.data.message;
+                    this.simsScanned[0].store_name = response.data.data.store_name;
+                    this.simsScanned[0].store_id = response.data.data.store_id;
                     this.simsScanned[0].sim_identity = response.data.data.sim_identity;
 
                     if (response.data.status == 'Failed') {

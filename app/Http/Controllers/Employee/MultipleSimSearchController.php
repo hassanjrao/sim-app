@@ -30,6 +30,17 @@ class MultipleSimSearchController extends Controller
         $lat = $request->lat;
         $lng = $request->lng;
 
+        $store_name = "";
+        $store_id = "";
+
+        $storeSim = Sim::where("sim_number", $sim_number)->first();
+
+
+        if ($storeSim) {
+            $store_name = $storeSim->store ? $storeSim->store->name : "";
+            $store_id = $storeSim->store ? $storeSim->store->id : "";
+        }
+
 
         /*
             Multiple Sim Search:
@@ -61,8 +72,9 @@ class MultipleSimSearchController extends Controller
                 "message" => "Sim found",
                 "data"=>[
                     "sim_number"=>$sim_number,
-                    "store_name"=>"",
-                    "sim_identity"=>"Other",
+                    "store_name"=>$store_name,
+                    "store_id"=>$store_id,
+                    "sim_identity"=>$sim->company,
                 ]
 
             ],200);
@@ -83,8 +95,9 @@ class MultipleSimSearchController extends Controller
             "message" => "Sim found",
             "data"=>[
                 "sim_number"=>$sim_number,
-                "store_name"=>"",
-                "sim_identity"=>"KYA",
+                "store_name"=>$store_name,
+                "store_id"=>$store_id,
+                "sim_identity"=>$sim->company,
             ]
 
         ],200);
